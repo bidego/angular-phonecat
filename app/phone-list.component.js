@@ -5,13 +5,28 @@ angular.
   module('phonecatApp').
   component('phoneList', {
     template:
+        '<h1> {{$ctrl.user}} </h1>' +
+        '<p>Total numbers of phones: {{ $ctrl.phones.length }}</p>' +
         '<ul>' +
           '<li ng-repeat="phone in $ctrl.phones">' +
             '<span>{{phone.name}}</span>' +
             '<p>{{phone.snippet}}</p>' +
           '</li>' +
-        '</ul>',
+        '</ul>' +
+        '<table>' +
+          '<tr ng-repeat="i in $ctrl.rows">' +
+            '<td ng-repeat="j in $ctrl.rows">{{ j + (i*8) + 1 }}</td>' +
+          '</tr>' +
+        '</table>',
     controller: function PhoneListController() {
+      this.rows = []
+      for(let i = 0; i <8 ; i++) {
+        this.rows.push(i);
+      }
+
+      this.user = 'Gon';
+
+
       this.phones = [
         {
           name: 'Nexus S',

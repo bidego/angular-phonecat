@@ -76,6 +76,9 @@ describe('PhoneCat Application', function() {
     it('should display the `nexus-s` page', function() {
       expect(element(by.binding('$ctrl.phone.name')).getText()).toBe('Nexus S');
     });
+    it('should display four thumbs', function() {
+      expect(element.all(by.repeater('img in $ctrl.phone.images')).count()).toBe(4);
+    });
 
   });
 
